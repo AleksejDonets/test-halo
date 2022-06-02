@@ -1,0 +1,26 @@
+$white : #fff;
+$black: #000;
+$gray: #00000033;
+$success: #4BCFA0;
+$error: #E43F3F;
+$placeholderColor: #00000080;
+@mixin title() {
+	font-size: 2.5em;
+	line-height: 48px;
+	text-transform: capitalize;
+	margin-bottom: 30px;
+}
+@mixin category {
+	text-transform: uppercase;
+	color: $black;
+}
+@mixin price {
+	display: flex;
+		align-items: center;
+		span{
+			font-size: 1.875em;
+			&:last-of-type{
+				font-size: 3.75em;
+			}
+		}
+}

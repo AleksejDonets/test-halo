@@ -1,0 +1,30 @@
+@import '../../styles/vars';
+
+.item {
+	&_wrap{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		padding: 54px 46px;
+	}
+	&_category {
+		@include category;
+	}
+	&_title{
+		@include title;
+	}
+	&_price{
+		@include price;
+	}
+}
+.form{
+	width: 100%;
+	margin-top: 35px;
+}
+.send_btn {
+	width: 100%;
+	button{
+		width: 100%;
+	}
+}

@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import GoodsServices from '../../services/goodsServices';
-
+import {GoodsModel} from '../../models/Goods.model';
 const initialState = {
 	goods:[],
 	selectedGoods:{},
@@ -10,8 +9,8 @@ const initialState = {
 export const fetchGoodsAsync = createAsyncThunk(
 	'goods/fetchAll',
 	async () => {
-		const res = await GoodsServices.fetchAll();
-		return res.data
+		const res = await GoodsModel.getGoods('b7d36eea-0b3f-414a-ba44-711b5f5e528e');
+		return res
 	}
 );
 

@@ -1,3 +1,4 @@
+@import '../../styles/vars';
 .button{
 	border-radius: 16px;
 	border: 1px solid rgba(0, 0, 0, 0.1);
@@ -15,4 +16,9 @@
 		color: #fff;
 		
 	}
+	&[variant="success"] {
+		background-color:$success;
+		color: $white;
+	}
+
 }

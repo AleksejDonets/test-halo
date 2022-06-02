@@ -3,7 +3,9 @@ import styles from './Goods.module.scss';
 import Button from "../Button/Button";
 import { selectGoods } from '../../store/slices/goodsSlice';
 import { useDispatch } from "react-redux";
-const Goods = ({item}) => {
+const Goods = ({
+	item
+}) => {
 
 	const {category, name, price} = item;
 	const dispatch = useDispatch();
@@ -20,7 +22,8 @@ const Goods = ({item}) => {
 					<span>$</span><span>{price}</span>
 				</div>
 				<Button
-					text={'Buy'}
+					text='Buy'
+					title="Buy this Item!"
 					onClick={()=>{dispatch(selectGoods(item))}}
 				/>
 			</div>
