@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, {useRef} from "react";
 import { useDispatch } from "react-redux";
 import Button from "../Button/Button";
 import { useInput } from "../../features/hooks";
@@ -9,10 +9,11 @@ import styles from './ShoppingCart.module.scss';
 export const ShoppingCart = ({
 	item
 }) => {
+	const form = useRef(null);
+
 	const dispatch = useDispatch();
 	const {name, category, price} = item;
-	const nameInput = useInput('', {
-		minLength: 3, 
+	const nameInput = useInput('', { 
 		isEmpty: true, 
 		onlyLetters: true 
 	});
@@ -20,9 +21,7 @@ export const ShoppingCart = ({
 		isEmpty: true,
 		phoneFormat: true,
 		length: 12,
-	})
-
-	const formRef = useRef(null);
+	});
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
@@ -32,10 +31,13 @@ export const ShoppingCart = ({
 			phone: phoneInput.value
 		};
 		localStorage.setItem('order', JSON.stringify(formData));
-		dispatch(closePopup(false))
+		phoneInput.onClose();
+		nameInput.onClose();
+		dispatch(closePopup(false));
+		
 	}
 	return (
-		<form onSubmit={handleSubmit} ref={formRef}>
+		<form onSubmit={handleSubmit} ref={form}>
 			<div className={styles.item_wrap}>
 				<div 
 					className={styles.item_category}>
@@ -70,7 +72,7 @@ export const ShoppingCart = ({
 						title="Send order"
 						text='Order'
 						type="submit"
-						disabled={nameInput.validation.validInput || phoneInput.validation.validInput }
+						disabled={!nameInput.validation.validInput || !phoneInput.validation.validInput }
 					/>
 					
 				</div>

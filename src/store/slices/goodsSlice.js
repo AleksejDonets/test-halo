@@ -24,6 +24,12 @@ export const goodsSlice = createSlice({
 		},
 		closePopup: (state, action) => {
 			state.openModal = action.payload
+		},
+		selectCheapest: (state) => {
+			state.selectedGoods = state.goods.sort((item, nextitem) => {
+				return item.price - nextitem.price
+			})[0];
+			state.openModal = true;
 		}
 	},
 	extraReducers: (builder) => {
@@ -34,7 +40,7 @@ export const goodsSlice = createSlice({
 	}
 });
 
-export const { selectGoods,closePopup } = goodsSlice.actions;
+export const { selectGoods,closePopup,selectCheapest } = goodsSlice.actions;
 
 
 export default goodsSlice.reducer

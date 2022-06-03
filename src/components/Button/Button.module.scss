@@ -1,9 +1,9 @@
 @import '../../styles/vars';
 .button{
 	border-radius: 16px;
-	border: 1px solid rgba(0, 0, 0, 0.1);
+	border: 1px solid #0000001a;
 	background-color: transparent; 
-	color: #4BCFA0;
+	color: $success;
 	font-weight: 500;
 	line-height: 24px;
 	text-transform: uppercase;
@@ -11,14 +11,18 @@
 	cursor: pointer;
 	min-width: 64px;
 	&:hover{
-		background-color: #4BCFA0;
-		border-color: #4BCFA0;
-		color: #fff;
+		background-color: $success;
+		border-color: $success;
+		color: $white;
 		
 	}
 	&[variant="success"] {
 		background-color:$success;
 		color: $white;
+		border: none;
+	}
+	&:disabled {
+		background-color: darken($success, 40%);
 	}
 
 }

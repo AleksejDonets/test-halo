@@ -9,12 +9,9 @@ export const CustomInput = ({
 	blurHanler,
 }) => {
 
-	// const inputState = useInput('', validation);
-
 	let error = false;
 	let errorText = '';
 	for( const key in validation.validation){
-		debugger;
 		if(validation.validation[key].error){
 			error = true;
 			errorText = validation.validation[key].errorText;

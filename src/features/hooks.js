@@ -11,11 +11,11 @@ const useValidation = (value, rules) => {
 		errorText: ''
 	});
 	const [phoneError, setPhoneError] = useState({
-		error: true,
+		error: false,
 		errorText: ''
 	});
 	const [lengthError, setLengthError] = useState({
-		error: true,
+		error: false,
 		errorText: ''
 	});
 	const [minLengthError, setMinLengthError] = useState(false);
@@ -63,7 +63,6 @@ const useValidation = (value, rules) => {
 					break;
 				case 'phoneFormat': 
 					const regPhone = /^\d{12}$/;
-					console.log(regPhone.test(String(value)));
 					regPhone.test(String(value)) ? 
 					setPhoneError({
 						error: false,
@@ -82,7 +81,7 @@ const useValidation = (value, rules) => {
 	}, [value]);
 
 	useEffect(()=>{
-		if(isEmpty || lettersError || phoneError || lengthError || minLengthError){
+		if(isEmpty.error || lettersError.error || phoneError.error || lengthError.error || minLengthError.error){
 			setValidInput(false)
 		}else{
 			setValidInput(true)
@@ -111,10 +110,16 @@ export const useInput = (initValue, rulesValidation) => {
 	const onBlur = (e) => {
 		setBlur(true);
 	}
+
+	const onClose = (e) => {
+		setValue('');
+		setBlur(false)
+	}
 	return {
 		value,
 		onChange,
 		onBlur,
+		onClose,
 		isBlur,
 		validation:{...valid}
 	}

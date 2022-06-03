@@ -2,6 +2,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	flex-direction: column;
 	padding: 105px 0;
 }
 .goods_wrap{
@@ -11,7 +12,7 @@
 	grid-row-gap: 39px;
 	height: 100%;
 	@media(max-width: 1210px){
-		grid-template-columns: repeat(3, 270px);
+		grid-template-columns: repeat(3, minmax(270px, 1fr));
 	}
 	@media(max-width: 960px){
 		grid-template-columns: repeat(2, 350px);
@@ -21,7 +22,14 @@
 		grid-column-gap: 38px;
 	}
 	@media(max-width: 610px){
-		grid-template-columns: repeat(minmax(200px, 1fr));
+		grid-template-columns: minmax(300px, 1fr);
 		grid-column-gap: 38px;
+	}
+}
+.goods_cheapest {
+	width: 235px;
+	margin: 85px 0;
+	button {
+		width: 100%;
 	}
 }

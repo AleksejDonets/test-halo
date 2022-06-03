@@ -18,6 +18,9 @@
 		min-width: 384px;
 		background-color: #fff;
 		border-radius: 24px;
+		@media(max-width: 390px ){
+			min-width: 90%;
+		}
 	}
 	&__close{
 		position: absolute;

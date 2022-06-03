@@ -7,9 +7,9 @@ const Button = ({
 	title,
 	disabled,
 	variant,
-	type
+	type,
+	...rest
 }) => {
-
 	return (
 		<button
 			className={styles.button}
@@ -18,6 +18,7 @@ const Button = ({
 			variant={variant}
 			disabled={disabled}
 			type={type}
+			{...rest}
 		>
 			{text}
 		</button>

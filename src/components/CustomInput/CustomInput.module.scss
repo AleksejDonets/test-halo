@@ -32,10 +32,13 @@
 }
 
 .empty_error {
+	margin: 4px 0;
+	font-size: 12px;
+	line-height: 16px;
 	height: 16px;
 }
 .error {
-	margin-top: 4px;
+	margin: 4px 0;
 	font-size: 12px;
 	line-height: 16px;
 	color: $error;

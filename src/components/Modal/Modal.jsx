@@ -5,12 +5,12 @@ import styles from './Modal.module.scss';
 const Modal = ({
 	active, 
 	setActive, 
-	children
+	children,
 }) => {
 	const activeTask = active ? styles.active : '';
 	return ReactDOM.createPortal (
 
-		<div className={`${styles.modal} ${activeTask} `} onClick={() => setActive(false)}>
+		<div className={`${styles.modal} ${activeTask} `} onClick={() => setActive(false)} >
 			<div className={styles.modal_content}  onClick={e => e.stopPropagation() }>
 				<div className={styles.modal__close}>
 					<button 

@@ -1,11 +1,12 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchGoodsAsync } from '../../store/slices/goodsSlice';
 import Goods from "../../components/Goods/Goods";
 import Modal from "../../components/Modal/Modal";
-import {closePopup} from '../../store/slices/goodsSlice';
+import {closePopup,selectCheapest} from '../../store/slices/goodsSlice';
 import { ShoppingCart } from "../../components/ShoppingCart/ShoppingCart";
 import styles from './Main.module.scss';
+import Button from "../../components/Button/Button";
 
 const Main = () => {
 	const goods = useSelector(state => state.goods.goods);
@@ -21,39 +22,9 @@ const Main = () => {
 	useEffect(()=>{
 		fetchAll()
 	},[fetchAll])
-	// const goods = [
-	// 	{
-	// 		name: 'Item 1',
-	// 		price: '1.99',
-	// 		category: 'cat_1'
-	// 	},
-	// 	{
-	// 		name: 'Item 2',
-	// 		price: '2.99',
-	// 		category: 'cat_2'
-	// 	},
-	// 	{
-	// 		name: 'Item 1',
-	// 		price: '1.99',
-	// 		category: 'cat_1'
-	// 	},
-	// 	{
-	// 		name: 'Item 1',
-	// 		price: '1.99',
-	// 		category: 'cat_1'
-	// 	},	
-	// 	{
-	// 		name: 'Item 1',
-	// 		price: '2.99',
-	// 		category:'cat_2'
-	// 	},
-	// 	{
-	// 		name: 'Item 1',
-	// 		price: '1.99',
-	// 		category: 'cat_1'
-	// 	}
-	// ]
-
+	const buyCheapest = () => {
+		dispatch(selectCheapest());
+	}
 	return(
 		<div className={styles.container}>
 			<div className={styles.goods_wrap}>
@@ -63,11 +34,14 @@ const Main = () => {
 						<Goods key={item.name}  item={item} />
 					))
 				):(
-					<h1>Loading</h1>
+					<h1>Loading...</h1>
 				)
 			}
 			</div>
-			<Modal active={activeModal} setActive={() => {dispatch(closePopup(false))}}>
+			<div className={styles.goods_cheapest}>
+				<Button text='Buy cheapest' variant="success" onClick={buyCheapest}/>
+			</div>
+			<Modal active={activeModal} setActive={() => {dispatch(closePopup(false))}} >
 				<ShoppingCart item={selectedItem}/>
 			</Modal>
 		</div>
