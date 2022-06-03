@@ -22,7 +22,7 @@ export const goodsSlice = createSlice({
 			state.selectedGoods = Object.assign({}, action.payload);
 			state.openModal = true;
 		},
-		closePopup: (state, action) => {
+		togglePopup: (state, action) => {
 			state.openModal = action.payload
 		},
 		selectCheapest: (state) => {
@@ -40,7 +40,7 @@ export const goodsSlice = createSlice({
 	}
 });
 
-export const { selectGoods,closePopup,selectCheapest } = goodsSlice.actions;
+export const { selectGoods,togglePopup,selectCheapest } = goodsSlice.actions;
 
 
 export default goodsSlice.reducer

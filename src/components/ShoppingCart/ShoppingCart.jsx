@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import Button from "../Button/Button";
 import { useInput } from "../../features/hooks";
 import { CustomInput } from "../CustomInput/CustomInput";
-import {closePopup} from '../../store/slices/goodsSlice';
+import {togglePopup} from '../../store/slices/goodsSlice';
 import styles from './ShoppingCart.module.scss';
 
 export const ShoppingCart = ({
@@ -33,7 +33,7 @@ export const ShoppingCart = ({
 		localStorage.setItem('order', JSON.stringify(formData));
 		phoneInput.onClose();
 		nameInput.onClose();
-		dispatch(closePopup(false));
+		dispatch(togglePopup(false));
 		
 	}
 	return (

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchGoodsAsync } from '../../store/slices/goodsSlice';
 import Goods from "../../components/Goods/Goods";
 import Modal from "../../components/Modal/Modal";
-import {closePopup,selectCheapest} from '../../store/slices/goodsSlice';
+import {togglePopup,selectCheapest} from '../../store/slices/goodsSlice';
 import { ShoppingCart } from "../../components/ShoppingCart/ShoppingCart";
 import styles from './Main.module.scss';
 import Button from "../../components/Button/Button";
@@ -41,7 +41,7 @@ const Main = () => {
 			<div className={styles.goods_cheapest}>
 				<Button text='Buy cheapest' variant="success" onClick={buyCheapest}/>
 			</div>
-			<Modal active={activeModal} setActive={() => {dispatch(closePopup(false))}} >
+			<Modal active={activeModal} setActive={() => {dispatch(togglePopup(false))}} >
 				<ShoppingCart item={selectedItem}/>
 			</Modal>
 		</div>

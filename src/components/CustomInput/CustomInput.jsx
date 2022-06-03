@@ -1,5 +1,8 @@
 import React from "react"
+import classNames from 'classnames/bind';
 import styles from './CustomInput.module.scss';
+
+let cx = classNames.bind(styles);
 
 export const CustomInput = ({
 	type,
@@ -18,9 +21,11 @@ export const CustomInput = ({
 			break;
 		}
 	}
-	
-	const classString = (!validation.isBlur && error) ? `${styles.input}` : (validation.isBlur && error)  ? `${styles.input} ${styles.input_error}` : `${styles.input} ${styles.input_success}`
-
+	const classString = cx({
+		input: true,
+		input_error: validation.isBlur && error,
+		input_success: validation.isBlur && !error,
+	});
 	return (
 		<>
 			<input 
