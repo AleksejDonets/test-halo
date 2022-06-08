@@ -1,27 +1,20 @@
-import React, { useEffect, useCallback } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchGoodsAsync } from '../../store/slices/goodsSlice';
 import Goods from "../../components/Goods/Goods";
 import Modal from "../../components/Modal/Modal";
 import {togglePopup,selectCheapest} from '../../store/slices/goodsSlice';
 import { ShoppingCart } from "../../components/ShoppingCart/ShoppingCart";
 import styles from './Main.module.scss';
 import Button from "../../components/Button/Button";
+import { useGetAllGoodsQuery } from '../../services/goodsApi';
 
 const Main = () => {
-	const goods = useSelector(state => state.goods.goods);
 	const activeModal = useSelector(state => state.goods.openModal);
 	const selectedItem = useSelector( state => state.goods.selectedGoods);
 
-	const dispatch = useDispatch();
+  const {data: goods} = useGetAllGoodsQuery();
+  const dispatch = useDispatch();
 
-	const fetchAll = useCallback(() => {
-		dispatch(fetchGoodsAsync())
-	},[dispatch])
-
-	useEffect(()=>{
-		fetchAll()
-	},[fetchAll])
 	const buyCheapest = () => {
 		dispatch(selectCheapest());
 	}
